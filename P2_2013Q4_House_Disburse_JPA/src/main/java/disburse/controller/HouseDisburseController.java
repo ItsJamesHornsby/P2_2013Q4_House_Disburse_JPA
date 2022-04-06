@@ -2,6 +2,10 @@ package disburse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import disburse.dao.HouseDisburseDAO;
 
@@ -17,6 +21,15 @@ public class HouseDisburseController {
 	
 	HouseDisburseDAO getHouseDisburseDAO() {
 		return hdDAO;
+	}
+	
+	@RequestMapping("all")
+	public String getAllPage(Model model) {
+		System.out.println("Get JPA all page...");
+//		model.addAttribute("hdList", hdDAO.getListOfAllHDJpa());
+		ObjectMapper om = new ObjectMapper();
+		
+		return "disburse.html";
 	}
 
 }

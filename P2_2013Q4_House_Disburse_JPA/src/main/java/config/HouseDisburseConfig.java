@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-@ComponentScan({"controller", "dao", "service", "repository"})
+@ComponentScan({"disburse.controller", "disburse.dao", "disburse.repository"})
 @SpringBootApplication
 public class HouseDisburseConfig {
 	
