@@ -1,10 +1,13 @@
 package disburse.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import disburse.repository.HouseDisburseRepository;
 import disburse.vo.HouseDisburseDetail;
-
+@Service
 public class HouseDisburseDAO {
 	
 	private HouseDisburseRepository hdr;
@@ -14,15 +17,27 @@ public class HouseDisburseDAO {
 		this.hdr = hdr;
 	}
 	
-	HouseDisburseRepository getHouseDisburseRepository() {
+	public HouseDisburseRepository getHouseDisburseRepository() {
 		return hdr;
 	}
 	
-	public HouseDisburseDetail getListOfAllHDJpa(Integer hdId) {
-		HouseDisburseDetail hdd = hdr.findById(hdId);
-		hdd.setBioGuideID(hdd.getBioGuideID());
+	public List<HouseDisburseDetail> getListOfAllHDJpa() {
+		List<HouseDisburseDetail> hdd = hdr.findAll();
+		for (HouseDisburseDetail hd1 : hdd ) {
+			hd1.setOffice(hd1.getOffice().toLowerCase());
+		}
 		return hdd;
 		
+	}
+
+	public List<HouseDisburseDetail> getHDById(String hdId) {
+		List<HouseDisburseDetail> hd = hdr.findBybioGuideID(hdId);
+		return hd;
+	}
+	
+	public List<HouseDisburseDetail> getHighestAmount() {
+		List<HouseDisburseDetail> hd = hdr.getHighestAmount();
+		return hd;
 	}
 
 }

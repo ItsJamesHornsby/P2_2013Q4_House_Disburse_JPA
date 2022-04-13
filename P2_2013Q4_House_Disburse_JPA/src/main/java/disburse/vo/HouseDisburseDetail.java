@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import javax.persistence.Id;
 
 @Entity
@@ -29,8 +32,10 @@ public class HouseDisburseDetail {
 	@Column(nullable =  false, name = "PURPOSE")
 	private String purpose;
 	@Column(nullable =  false, name = "AMOUNT")
+	@JsonAlias("AMOUNT")
 	private double amount;
-	@Column(nullable =  false, name = "YEAR")
+	@Column(nullable =  true, name = "YEAR")
+	@JsonAlias("YEAR")
 	private String year;
 	public int getRecordID() {
 		return recordID;
