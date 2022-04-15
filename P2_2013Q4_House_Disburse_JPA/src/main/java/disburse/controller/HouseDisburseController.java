@@ -27,7 +27,7 @@ public class HouseDisburseController {
 	HouseDisburseDAO getHouseDisburseDAO() {
 		return hdDAO;
 	}
-	
+	//Challenge 1
 	@RequestMapping("all")
 	public String getAllPage(Model model) {
 		//System.out.println("Get JPA all page...");
@@ -35,18 +35,23 @@ public class HouseDisburseController {
 		//ObjectMapper om = new ObjectMapper();
 		return "disburse.html";
 	}
-	
+	//Challenge 2
 	@GetMapping("bioGuideID/{id}")
 	public String getHDbyID(@PathVariable String id, Model model) throws JsonProcessingException {
 		model.addAttribute("hdList", hdDAO.getHDById(id));
 		return "disburse.html";
 	}
-	
+	//Challenge 4
 	@GetMapping("highestAmount")
 	public String getHighestAmount(Model model) {
 		model.addAttribute("hdList", hdDAO.getHighestAmount());
 		return "disburse.html";
 	}
-		
+	//Challenge 3
+	@RequestMapping("changeCategory")
+	public String changeCategory(Model model) {
+		model.addAttribute("hdList", hdDAO.updateCategory());
+		return "disburse.html";
+	}
 
 }
