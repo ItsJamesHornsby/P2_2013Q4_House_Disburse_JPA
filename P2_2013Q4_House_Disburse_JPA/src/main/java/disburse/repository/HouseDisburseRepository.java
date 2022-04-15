@@ -13,12 +13,13 @@ import org.springframework.stereotype.Service;
 import disburse.vo.HouseDisburseDetail;
 
 public interface HouseDisburseRepository extends JpaRepository<HouseDisburseDetail, String> {
+	//Challenge 2
 	List<HouseDisburseDetail> findBybioGuideID(String bioGuideID);
-	
+	//Challenge 1
 	List<HouseDisburseDetail> findAll();
-	
+	//Challenge 2.5
 	List<HouseDisburseDetail> findByYear(String year);
-	
+	//Challenge 4
 	@Query(value = "SELECT * from T_2013Q4_HOUSE_DISBURSE where AMOUNT = (SELECT MAX(AMOUNT) from T_2013Q4_HOUSE_DISBURSE)", nativeQuery = true)
 	List<HouseDisburseDetail> getHighestAmount();
 	
