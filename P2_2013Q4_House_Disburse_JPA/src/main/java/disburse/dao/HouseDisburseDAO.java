@@ -52,7 +52,7 @@ public class HouseDisburseDAO {
 			  		hd.setCategory("FM");
 			  } else if(hd.getCategory().equals("PERSONNEL COMPENSATION")) {
 			  		hd.setCategory("PC");
-			  } else if(hd.getCategory().equals("RENT")) {
+			  } else if(hd.getCategory().contains("RENT")) {
 			  		hd.setCategory("R");
 			  } else if(hd.getCategory().equals("EQUIPMENT")) {
 			  		hd.setCategory("E");
@@ -63,7 +63,14 @@ public class HouseDisburseDAO {
 			  } else if(hd.getCategory().equals("PRINTING AND REPRODUCTION")) {
 			  		hd.setCategory("PR");
 			  }
-		  } return hdList;
+			  //switch(hd.getCategory()) {
+			   //case "FRANKED MAIL":
+			   	//hd.setCategory("FM");}
+			   
+		  }
+		//plRepo.saveAll(plList);
+		  //return plRepo.findAll();
+		  return hdList;
 	  }
 	 
 
